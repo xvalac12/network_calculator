@@ -49,7 +49,21 @@ namespace IPK_Calculator_Client
                 IPAddress[] ipAddresses = Dns.GetHostAddresses(args[2]); // https://www.c-sharpcorner.com/UploadFile/1e050f/getting-ip-address-and-host-name-using-dns-class/
                 endpoint = new IPEndPoint(ipAddresses[0], port);
                 
-            }       
+            }
+
+            // IPV4, unreliable connection, protocol UDP
+            Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
+            if (args[6] == "tcp")
+            {
+                socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                Tcp.connect(socket, endpoint, args[2]);
+            }
+            else if (args[6] != "udp")
+            {
+                Console.Error.WriteLine("Mode can be only UDP or TCP. You entered " + args[6]);
+                Environment.Exit(1);
+            }
+               
         }
 
     }
