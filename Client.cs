@@ -63,6 +63,7 @@ namespace IPK_Calculator_Client
                 Console.Error.WriteLine("Mode can be only UDP or TCP. You entered " + args[6]);
                 Environment.Exit(1);
             }
+            socket.Close();
                
         }
 
