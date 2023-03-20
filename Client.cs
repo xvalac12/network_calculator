@@ -34,7 +34,22 @@ namespace IPK_Calculator_Client
 
         public static void Main(string[] args)
         {
-            int port = cla_handling(args);            
+            int port = cla_handling(args);
+
+            IPAddress ipAddress;
+            IPEndPoint endpoint;
+
+            try
+            {
+                ipAddress = IPAddress.Parse(args[2]);
+                endpoint = new IPEndPoint(ipAddress, port);
+            }
+            catch
+            {
+                IPAddress[] ipAddresses = Dns.GetHostAddresses(args[2]); // https://www.c-sharpcorner.com/UploadFile/1e050f/getting-ip-address-and-host-name-using-dns-class/
+                endpoint = new IPEndPoint(ipAddresses[0], port);
+                
+            }       
         }
 
     }
