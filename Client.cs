@@ -7,7 +7,7 @@ namespace IPK_Calculator_Client
     {
 
 
-        static void comunication(Socket socket, EndPoint endpoint, string protocol)
+        static void comunication(Socket socket, EndPoint endPoint, string protocol)
         {
             string? line;
             while (true)
@@ -24,7 +24,7 @@ namespace IPK_Calculator_Client
                 }
                 else if (protocol == "udp")
                 {
-
+                    Udp.communication(line, socket, endPoint);
                 }
             }
         }
@@ -66,17 +66,17 @@ namespace IPK_Calculator_Client
             int port = cla_handling(args);
 
             IPAddress ipAddress;
-            IPEndPoint endpoint;
+            IPEndPoint endPoint;
 
             try
             {
                 ipAddress = IPAddress.Parse(args[1]);
-                endpoint = new IPEndPoint(ipAddress, port);
+                endPoint = new IPEndPoint(ipAddress, port);
             }
             catch
             {
                 IPAddress[] ipAddresses = Dns.GetHostAddresses(args[1]); // https://www.c-sharpcorner.com/UploadFile/1e050f/getting-ip-address-and-host-name-using-dns-class/
-                endpoint = new IPEndPoint(ipAddresses[0], port);
+                endPoint = new IPEndPoint(ipAddresses[0], port);
                 
             }
 
@@ -85,15 +85,13 @@ namespace IPK_Calculator_Client
             if (args[5] == "tcp")
             {
                 socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-                Tcp.connect(socket, endpoint, args[1]);
+                Tcp.connect(socket, endPoint, args[1]);
             }
             
-
-            comunication(socket, endpoint, args[5]);
+            comunication(socket, endPoint, args[5]);
 
             socket.Close();
-            Environment.Exit(0);
-               
+            Environment.Exit(0);              
         }
 
     }
