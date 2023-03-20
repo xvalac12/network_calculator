@@ -21,5 +21,20 @@ namespace IPK_Calculator_Client
             }
             return;
         }
+
+
+        public static int communication(String line, Socket socket)
+        {
+            socket.Send(Encoding.ASCII.GetBytes(line));
+
+            byte[] output = new byte[1024];
+            string controlVar = Encoding.ASCII.GetString(output, 0, socket.Receive(output));
+            Console.Write(controlVar);
+            if (controlVar == "BYE\n")
+            {
+                return 1;  
+            }
+            return 0;
+        }
     }
 }
