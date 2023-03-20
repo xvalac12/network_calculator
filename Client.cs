@@ -1,2 +1,41 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using System.Net;
+using System.Net.Sockets;
+
+namespace IPK_Calculator_Client
+{
+    class Client
+    {
+        static int cla_handling(string[] args)
+        {
+            int portNum = 0;
+            if (args.Length != 6)
+            {
+                Console.Error.WriteLine("Wrong number of arguments. Number of arguments is " + args.Length + " insted of 6.");
+                Environment.Exit(1);
+            }
+            if (args[0] != "-h" || args[2] != "-p" || args[4] != "-m")
+            {
+                Console.Error.WriteLine("Wrong argument entered. Usage: ./ipkcpc -h <host> -p <port> -m <mode>");
+                Environment.Exit(1);
+            }
+            try 
+            {
+                portNum = int.Parse(args[3]);
+            }
+            catch
+            {
+                Console.Error.WriteLine("Wrong port entered.");
+                Environment.Exit(1);
+            }
+
+            return portNum;
+            
+        }
+
+        public static void Main(string[] args)
+        {
+            int port = cla_handling(args);            
+        }
+
+    }
+}
