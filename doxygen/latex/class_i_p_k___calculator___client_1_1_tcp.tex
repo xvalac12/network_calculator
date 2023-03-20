@@ -1,0 +1,83 @@
+\hypertarget{class_i_p_k___calculator___client_1_1_tcp}{}\doxysection{IPK\+\_\+\+Calculator\+\_\+\+Client.\+Tcp Class Reference}
+\label{class_i_p_k___calculator___client_1_1_tcp}\index{IPK\_Calculator\_Client.Tcp@{IPK\_Calculator\_Client.Tcp}}
+
+
+Class with methods used for TCP communication.  
+
+
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{class_i_p_k___calculator___client_1_1_tcp_aafb1be6be3211870f22db7161329b9d4}{connect}} (Socket socket, End\+Point end\+Point, string server)
+\begin{DoxyCompactList}\small\item\em Function will try connect to server or print error. \end{DoxyCompactList}\item 
+static int \mbox{\hyperlink{class_i_p_k___calculator___client_1_1_tcp_aec911a2b4c72424359fc1f68d536185c}{communication}} (String line, Socket socket)
+\begin{DoxyCompactList}\small\item\em Sending messages from user to client and receiving response. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_i_p_k___calculator___client_1_1_tcp_a49855663aedefada3f8af42948217b1b}{sigint}} (Socket socket)
+\begin{DoxyCompactList}\small\item\em Exiting communication in case of interrupt signal. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class with methods used for TCP communication. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_i_p_k___calculator___client_1_1_tcp_aec911a2b4c72424359fc1f68d536185c}\label{class_i_p_k___calculator___client_1_1_tcp_aec911a2b4c72424359fc1f68d536185c}} 
+\index{IPK\_Calculator\_Client.Tcp@{IPK\_Calculator\_Client.Tcp}!communication@{communication}}
+\index{communication@{communication}!IPK\_Calculator\_Client.Tcp@{IPK\_Calculator\_Client.Tcp}}
+\doxysubsubsection{\texorpdfstring{communication()}{communication()}}
+{\footnotesize\ttfamily static int IPK\+\_\+\+Calculator\+\_\+\+Client.\+Tcp.\+communication (\begin{DoxyParamCaption}\item[{String}]{line,  }\item[{Socket}]{socket }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Sending messages from user to client and receiving response. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em line} & Command entered by User.\\
+\hline
+{\em socket} & Structure with information about type of connection.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 in case of end of communication, otherwiese 0.
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_i_p_k___calculator___client_1_1_tcp_aafb1be6be3211870f22db7161329b9d4}\label{class_i_p_k___calculator___client_1_1_tcp_aafb1be6be3211870f22db7161329b9d4}} 
+\index{IPK\_Calculator\_Client.Tcp@{IPK\_Calculator\_Client.Tcp}!connect@{connect}}
+\index{connect@{connect}!IPK\_Calculator\_Client.Tcp@{IPK\_Calculator\_Client.Tcp}}
+\doxysubsubsection{\texorpdfstring{connect()}{connect()}}
+{\footnotesize\ttfamily static void IPK\+\_\+\+Calculator\+\_\+\+Client.\+Tcp.\+connect (\begin{DoxyParamCaption}\item[{Socket}]{socket,  }\item[{End\+Point}]{end\+Point,  }\item[{string}]{server }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Function will try connect to server or print error. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em socket} & Structure with information about type of connection.\\
+\hline
+{\em end\+Point} & Info about host (Host and port), which will participate in communication.\\
+\hline
+{\em server} & Hostname or IP address of server, which we are tryin connect to.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_i_p_k___calculator___client_1_1_tcp_a49855663aedefada3f8af42948217b1b}\label{class_i_p_k___calculator___client_1_1_tcp_a49855663aedefada3f8af42948217b1b}} 
+\index{IPK\_Calculator\_Client.Tcp@{IPK\_Calculator\_Client.Tcp}!sigint@{sigint}}
+\index{sigint@{sigint}!IPK\_Calculator\_Client.Tcp@{IPK\_Calculator\_Client.Tcp}}
+\doxysubsubsection{\texorpdfstring{sigint()}{sigint()}}
+{\footnotesize\ttfamily static void IPK\+\_\+\+Calculator\+\_\+\+Client.\+Tcp.\+sigint (\begin{DoxyParamCaption}\item[{Socket}]{socket }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Exiting communication in case of interrupt signal. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em socket} & Structure with information about type of connection.\\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Tcp.\+cs\end{DoxyCompactItemize}
