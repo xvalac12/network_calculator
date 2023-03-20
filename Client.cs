@@ -5,6 +5,26 @@ namespace IPK_Calculator_Client
 {
     class Client
     {
+
+
+        static void comunication(Socket socket, EndPoint endpoint, string protocol)
+        {
+            string? line;
+            while (true)
+            {
+                if ((line = Console.ReadLine()) == null) continue;
+                
+                if (protocol == "tcp")
+                {
+                
+                }
+                else if (protocol == "udp")
+                {
+
+                }
+            }
+        }
+
         static int cla_handling(string[] args)
         {
             int portNum = 0;
@@ -63,7 +83,11 @@ namespace IPK_Calculator_Client
                 Console.Error.WriteLine("Mode can be only UDP or TCP. You entered " + args[6]);
                 Environment.Exit(1);
             }
+
+            comunication(socket, endpoint, args[6]);
+
             socket.Close();
+            Environment.Exit(0);
                
         }
 
