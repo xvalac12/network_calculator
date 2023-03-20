@@ -3,10 +3,18 @@ using System.Net.Sockets;
 
 namespace IPK_Calculator_Client
 {
+    /// <summary>
+    /// A main class of client.
+    /// </summary>
     class Client
     {
 
-
+         /// <summary>
+        /// Loop for communication
+        /// </summary>
+        /// <param name="socket">Structure with information about type of connection.</param>
+        /// <param name="endPoint">Info about host (Host and port), which will participate in communication.</param>
+        /// <param name="protocol">Protocol used for network communication.</param>
         static void comunication(Socket socket, EndPoint endPoint, string protocol)
         {
             string? line;
@@ -29,6 +37,11 @@ namespace IPK_Calculator_Client
             }
         }
 
+        /// <summary>
+        /// Check the correctness of command line arguments.
+        /// </summary>
+        /// <param name="args">Array with command line arguments.</param>
+        /// <returns>Port number of server.</returns>
         static int cla_handling(string[] args)
         {
             int portNum = 0;
@@ -61,6 +74,10 @@ namespace IPK_Calculator_Client
             
         }
 
+        /// <summary>
+        /// Main method of client.
+        /// </summary>
+        /// <param name="args">Array with command line arguments.</param>
         public static void Main(string[] args)
         {
             int port = cla_handling(args);
