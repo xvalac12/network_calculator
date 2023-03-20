@@ -64,7 +64,7 @@ namespace IPK_Calculator_Client
         public static void Main(string[] args)
         {
             int port = cla_handling(args);
-
+            string mode = args[5];
             IPAddress ipAddress;
             IPEndPoint endPoint;
 
@@ -82,7 +82,7 @@ namespace IPK_Calculator_Client
 
             // IPV4, unreliable connection, protocol UDP
             Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
-            if (args[5] == "tcp")
+            if (mode == "tcp")
             {
                 socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
                 Tcp.connect(socket, endPoint, args[1]);
@@ -90,7 +90,7 @@ namespace IPK_Calculator_Client
             
             Console.CancelKeyPress += delegate(object? sender, ConsoleCancelEventArgs e) 
             {
-                if (args[6] == "tcp")
+                if (mode == "tcp")
                 {
                     Tcp.sigint(socket);
                 }
@@ -98,7 +98,7 @@ namespace IPK_Calculator_Client
                 Environment.Exit(0);
             };
 
-            comunication(socket, endPoint, args[5]);
+            comunication(socket, endPoint, mode);
 
             socket.Close();
             Environment.Exit(0);              
