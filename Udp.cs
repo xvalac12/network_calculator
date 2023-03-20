@@ -4,6 +4,9 @@ using System.Text;
 
 namespace IPK_Calculator_Client
 {
+    /// <summary>
+    /// Class with methods used for UDP communication.
+    /// </summary>
     class Udp
     {
         /// <summary>
