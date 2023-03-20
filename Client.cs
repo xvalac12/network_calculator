@@ -88,6 +88,16 @@ namespace IPK_Calculator_Client
                 Tcp.connect(socket, endPoint, args[1]);
             }
             
+            Console.CancelKeyPress += delegate(object? sender, ConsoleCancelEventArgs e) 
+            {
+                if (args[6] == "tcp")
+                {
+                    Tcp.sigint(socket);
+                }
+                socket.Close();
+                Environment.Exit(0);
+            };
+
             comunication(socket, endPoint, args[5]);
 
             socket.Close();

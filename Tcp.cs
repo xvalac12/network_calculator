@@ -7,7 +7,6 @@ namespace IPK_Calculator_Client
 
     class Tcp
     {
-
         public static void connect(Socket socket, EndPoint endpoint, string server)
         {
             try
@@ -17,12 +16,12 @@ namespace IPK_Calculator_Client
             catch
             {
                 Console.Error.WriteLine("Conection refused from server " + server);
-                Environment.Exit(1);
+                Environment.Exit(2);
             }
             return;
         }
 
-
+        
         public static int communication(String line, Socket socket)
         {
             socket.Send(Encoding.ASCII.GetBytes(line));
@@ -35,6 +34,15 @@ namespace IPK_Calculator_Client
                 return 1;  
             }
             return 0;
+        }
+
+        public static void sigint(Socket socket)
+        {
+            socket.Send(Encoding.ASCII.GetBytes("BYE\n"));
+            byte[] output = new byte[1024];
+            Console.Write(Encoding.ASCII.GetString(output, 0, socket.Receive(output)));
+            socket.Shutdown(SocketShutdown.Both);
+            return;
         }
     }
 }
