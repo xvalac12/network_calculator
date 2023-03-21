@@ -43,7 +43,8 @@ namespace IPK_Calculator_Client
             byte[] output = new byte[1024];
             string controlVar = Encoding.ASCII.GetString(output, 0, socket.Receive(output));
             Console.Write(controlVar);
-            if (controlVar == "BYE\n")
+
+            if (controlVar == "BYE\n") // server exits communication
             {
                 return 1;  
             }

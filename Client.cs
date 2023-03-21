@@ -105,7 +105,7 @@ namespace IPK_Calculator_Client
                 Tcp.connect(socket, endPoint, args[1]);
             }
             
-            Console.CancelKeyPress += delegate(object? sender, ConsoleCancelEventArgs e) 
+            Console.CancelKeyPress += delegate(object? sender, ConsoleCancelEventArgs e)  // https://learn.microsoft.com/en-us/dotnet/api/system.console.cancelkeypress?view=net-7.0
             {
                 if (mode == "tcp")
                 {

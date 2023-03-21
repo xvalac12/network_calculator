@@ -17,23 +17,23 @@ namespace IPK_Calculator_Client
         /// <param name="endPoint">Info about server (Address and port), which will participate in communication.</param>
         public static void communication(String line, Socket socket, EndPoint endPoint)
         {
-            byte[] info = {0, (byte)line.Length};
-            byte[] message = Encoding.ASCII.GetBytes(line);
-            byte[] request = new Byte[info.Length + message.Length];
+            byte[] info = {0, (byte)line.Length};       // opcode
+            byte[] message = Encoding.ASCII.GetBytes(line); // payload lenght
+            byte[] request = new Byte[info.Length + message.Length]; // payload
             info.CopyTo(request, 0);
             message.CopyTo(request, info.Length);
             socket.SendTo(request, 0, request.Length, SocketFlags.None, endPoint);
                         
             byte[] output = new byte[1024];
             int num = socket.Receive(output);
-            if (output[0] == 1)
+            if (output[0] == 1) // 
             {
-                if (output[1] == 1)
+                if (output[1] == 1) //status code == 1
                 {
                     String controlVar = Encoding.ASCII.GetString(output, 3, num);
                     Console.Write("ERR:" + controlVar);
                 }
-                else 
+                else //status code == 0
                 {
                     string controlVar = Encoding.ASCII.GetString(output, 3, num);
                     Console.WriteLine("OK:" + controlVar);
