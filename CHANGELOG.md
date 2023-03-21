@@ -13,5 +13,7 @@
 	- entering wrong query
 	-  reaction to sigint
 ## Known limitations
+- Application
+	- `make clean` do not work on windows 11 
 - Mode UDP
 	- when server sends wrong opcode, there is no timeout implemented 
