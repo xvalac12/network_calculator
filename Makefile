@@ -1,12 +1,17 @@
 all: clean build publish
 
 OS=linux-x64 #win-x64, osx-x64
-ARG=-o . -c Release -f net6.0
+ARG=-c Release -f net6.0
+
 clean:
-	dotnet clean -c Release -f net6.0
+	dotnet clean $(ARG)
+	rm -rf bin
+	rm -rf obj
+	rm -f ipkcp
+	rm -f ipkcp.pdb
 
 build: 
-	dotnet build -c Release -f net6.0
+	dotnet build $(ARG)
 
 publish:
-	dotnet publish $(ARG) -r $(OS)
+	dotnet publish -o . $(ARG) -r $(OS)
