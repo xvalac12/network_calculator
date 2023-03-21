@@ -18,15 +18,14 @@ namespace IPK_Calculator_Client
         static void comunication(Socket socket, EndPoint endPoint, string protocol)
         {
             string? line;
-            while (true)
+            while (!string.IsNullOrEmpty(line = Console.ReadLine()))
             {
-                if ((line = Console.ReadLine()) == null) continue;
+                if (line == null) continue;
                 
                 if (protocol == "tcp")
                 {
                     if (Tcp.communication(line, socket) == 1)
                     {
-                        socket.Shutdown(SocketShutdown.Both);
                         break;
                     }
                 }
@@ -34,6 +33,10 @@ namespace IPK_Calculator_Client
                 {
                     Udp.communication(line, socket, endPoint);
                 }
+            }
+            if (protocol == "tcp")
+            {
+                socket.Shutdown(SocketShutdown.Both);
             }
         }
 
