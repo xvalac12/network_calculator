@@ -1,4 +1,4 @@
-all: clean build publish
+all: build publish
 
 OS=linux-x64 #win-x64, osx-x64
 ARG=-c Release -f net6.0
