@@ -7,8 +7,8 @@ clean:
 	dotnet clean $(ARG)
 	rm -rf bin
 	rm -rf obj
-	rm -f ipkcp
-	rm -f ipkcp.pdb
+	rm -f ipkcpc
+	rm -f ipkcpc.pdb
 
 build: 
 	dotnet build $(ARG)
