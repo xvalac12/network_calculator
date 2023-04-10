@@ -30,12 +30,12 @@ namespace IPK_Calculator_Client
             {
                 if (output[1] == 1) //status code == 1
                 {
-                    String controlVar = Encoding.ASCII.GetString(output, 3, num);
-                    Console.Write("ERR:" + controlVar);
+                    string controlVar = Encoding.ASCII.GetString(output, 3, num - 3);
+                    Console.WriteLine("ERR:" + controlVar);
                 }
                 else //status code == 0
                 {
-                    string controlVar = Encoding.ASCII.GetString(output, 3, num);
+                    string controlVar = Encoding.ASCII.GetString(output, 3, num - 3);
                     Console.WriteLine("OK:" + controlVar);
                 }
             }

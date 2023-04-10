@@ -38,13 +38,13 @@ namespace IPK_Calculator_Client
         /// <returns>1 in case of end of communication, otherwiese 0.</returns>
         public static int communication(String line, Socket socket)
         {
-            socket.Send(Encoding.ASCII.GetBytes(line));
+            socket.Send(Encoding.ASCII.GetBytes(line + (char)10 ));
 
             byte[] output = new byte[1024];
             string controlVar = Encoding.ASCII.GetString(output, 0, socket.Receive(output));
             Console.Write(controlVar);
 
-            if (controlVar == "BYE\n") // server exits communication
+            if (controlVar == "BYE" + (char)10 ) // server exits communication
             {
                 return 1;  
             }
@@ -57,7 +57,7 @@ namespace IPK_Calculator_Client
         /// <param name="socket">Structure with information about type of connection.</param>
         public static void sigint(Socket socket)
         {
-            socket.Send(Encoding.ASCII.GetBytes("BYE\n"));
+            socket.Send(Encoding.ASCII.GetBytes("BYE" + (char)10 ));
             byte[] output = new byte[1024];
             Console.Write(Encoding.ASCII.GetString(output, 0, socket.Receive(output)));
             socket.Shutdown(SocketShutdown.Both);

@@ -20,7 +20,7 @@ namespace IPK_Calculator_Client
             string? line;
             while (true)
             {
-                if ((line = Console.ReadLine()) == null) continue;
+                if ((line = Console.ReadLine()) == null) break;
                 
                 if (protocol == "tcp")
                 {
